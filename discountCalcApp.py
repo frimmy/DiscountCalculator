@@ -21,6 +21,7 @@ class DiscountCalculator(object):
 			# break
 			
 		elif option.capitalize().strip() == 'Value':
+			value = self.value_verify(value, cart_total)
 			discount = value
 			# break
 			
@@ -49,7 +50,11 @@ class DiscountCalculator(object):
 				# value = float(raw_input("Enter discount percentage :> "))
 				
 
-				
+	def value_verify(self, value, cart_total):
+		if value > cart_total:
+			raise ValueError("Discount above full value of shopping cart.")
+		else:
+			return value
 					
 
 	# def calculate_discount(cart_total, discount, option):
