@@ -15,15 +15,19 @@ class DiscountCalculator(object):
 			if option.capitalize().strip() == 'Percent':
 				percent_discount = float(value) / 100
 				discount = cart_total * percent_discount
-				return discount
+				break
+				
 			elif option.capitalize().strip() == 'Value':
 				discount = value
-				return value
+				break
+				
 			elif option.capitalize().strip() == 'Q':
 				exit()
 			else:
 				print "You didn't enter correct discount type. Please try again or enter 'q' to quit"
 				option = raw_input("Enter 'percent' or 'value'> ")
+
+		return discount
 	# def calculate_discount(cart_total, discount, option):
 	#     """
 	#     Calculates dollar amount of discount off cart total
