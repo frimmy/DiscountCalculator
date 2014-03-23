@@ -10,29 +10,48 @@ class DiscountCalculator(object):
 		# discount = cart_total * percent_discount
 		# return discount
 
-		while True:
-			try:
+
+		# while True:
+			# try:
+		
+		if option.capitalize().strip() == 'Percent':
+			value = self.percent_verify(value)
+			percent_discount = float(value) / 100
+			discount = cart_total * percent_discount
+			# break
 			
-				if option.capitalize().strip() == 'Percent':
-					percent_discount = float(value) / 100
-					discount = cart_total * percent_discount
-					break
-					
-				elif option.capitalize().strip() == 'Value':
-					discount = value
-					break
-					
-				elif option.capitalize().strip() == 'Q':
-					exit()
-				else:
-					raise ValueError("Invalid discount type")
-					
-			except ValueError:
-				print "You didn't enter correct discount type. Please try again or enter 'q' to quit"
-				option = raw_input("Enter 'percent' or 'value'> ")
-				raise ValueError
+		elif option.capitalize().strip() == 'Value':
+			discount = value
+			# break
 			
+		elif option.capitalize().strip() == 'Q':
+			exit()
+		else:
+			raise ValueError("Invalid discount type")
+					
+			# except ValueError:
+				# raise ValueError
+				# print "You didn't enter correct discount type. Please try again or enter 'q' to quit"
+				# option = raw_input("Enter 'percent' or 'value'> ")
 		return discount
+
+	def percent_verify(self, value):
+		# while True:
+		# try:
+		if value >= 100:
+			raise ValueError("Discount above full value of shopping cart. Enter new discount.")
+		else:
+			return value
+
+			# except ValueError:
+				# raise ValueError
+				
+				# value = float(raw_input("Enter discount percentage :> "))
+				
+
+				
+					
+
 	# def calculate_discount(cart_total, discount, option):
 	#     """
 	#     Calculates dollar amount of discount off cart total
@@ -60,7 +79,8 @@ def main():
     if not options.percent_or_value:
         parser.error("You forgot to indicate the tax rate!")
 
-    discount = determine_discount(options.cart, options.discount, 
+    discount_calculator = DiscountCalculator()
+    discount = discount_calculator.determine_discount(options.cart, options.discount, 
                                     options.percent_or_value)
  
     print "The discount off your shopping cart is ${0:.2f}.".format(discount)
