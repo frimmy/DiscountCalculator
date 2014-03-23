@@ -10,23 +10,28 @@ class DiscountCalculator(object):
 		# discount = cart_total * percent_discount
 		# return discount
 
-
 		while True:
-			if option.capitalize().strip() == 'Percent':
-				percent_discount = float(value) / 100
-				discount = cart_total * percent_discount
-				break
-				
-			elif option.capitalize().strip() == 'Value':
-				discount = value
-				break
-				
-			elif option.capitalize().strip() == 'Q':
-				exit()
-			else:
+			try:
+			
+				if option.capitalize().strip() == 'Percent':
+					percent_discount = float(value) / 100
+					discount = cart_total * percent_discount
+					break
+					
+				elif option.capitalize().strip() == 'Value':
+					discount = value
+					break
+					
+				elif option.capitalize().strip() == 'Q':
+					exit()
+				else:
+					raise ValueError("Invalid discount type")
+					
+			except ValueError:
 				print "You didn't enter correct discount type. Please try again or enter 'q' to quit"
 				option = raw_input("Enter 'percent' or 'value'> ")
-
+				raise ValueError
+			
 		return discount
 	# def calculate_discount(cart_total, discount, option):
 	#     """
