@@ -5,19 +5,19 @@ class DiscountCalculator(object):
 
 	def determine_discount(self, cart_total, value, option):
 		# for TDD, this is the bare minimum it takes to have code pass the test
-		return 10.0
+		# return 10.0
 
 
-		# while True:
-		# 	if option.capitalize().strip() == 'Percent':
-		# 		return cart_total*((value)/100)
-		# 	elif option.capitalize().strip() == 'Value':
-		# 		return value
-		# 	elif option.capitalize().strip() == 'Q':
-		# 		exit()
-		# 	else:
-		# 		print "You didn't enter correct discount type. Please try again or enter 'q' to quit"
-		# 		option = raw_input("Enter 'percent' or 'value'> ")
+		while True:
+			if option.capitalize().strip() == 'Percent':
+				return cart_total*float(value)/100
+			elif option.capitalize().strip() == 'Value':
+				return value
+			elif option.capitalize().strip() == 'Q':
+				exit()
+			else:
+				print "You didn't enter correct discount type. Please try again or enter 'q' to quit"
+				option = raw_input("Enter 'percent' or 'value'> ")
 	# def calculate_discount(cart_total, discount, option):
 	#     """
 	#     Calculates dollar amount of discount off cart total
