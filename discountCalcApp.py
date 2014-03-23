@@ -55,7 +55,7 @@ class DiscountCalculator(object):
 			raise ValueError("Discount above full value of shopping cart.")
 		else:
 			return value
-					
+						
 
 	# def calculate_discount(cart_total, discount, option):
 	#     """
